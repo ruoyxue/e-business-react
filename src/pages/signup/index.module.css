@@ -1,0 +1,57 @@
+.signup {
+	background-image: 
+		linear-gradient(105deg, rgba(255,255,255,.92) 0%, rgba(255,255,255,.92) 60%, transparent 60%),
+		url(../../assets/images/clothes2.jpg);
+	height: 60vh;
+	@apply select-none overflow-hidden w-3/5 bg-cover bg-center mx-auto
+	rounded-3xl flex flex-col shadow-2xl mt-24 p-12;
+}
+
+.signup__title {
+	background-image: linear-gradient(to right, #7ed56f, #28b485);
+	-webkit-background-clip: text;
+	color: transparent;
+	transition: all .2s;
+	@apply text-5xl font-extrabold uppercase mb-6 mx-auto;
+}
+
+.signup__title:hover {
+	text-shadow: .5rem 1rem 1rem rgba(0,0,0,.2);
+	transform: translateY(-5px) skewX(-15deg);
+}
+
+.input_box {
+	background-color: rgba(255,255,255,.7);
+	border-bottom: 3px solid transparent;
+	transition: all .2s;
+	width: 90%;
+	@apply block text-2xl placeholder:text-gray-400 placeholder:font-bold h-16 px-6;
+}
+
+.input_box:focus {
+	outline: none;
+	border-bottom: 3px solid orange;
+	box-shadow: 0 2px 40px rgba(0,0,0,.1);
+}
+
+.signup__button {
+	background-color: #28b485!important;
+	min-width: max-content;
+	min-height: max-content;
+	border-radius: 150px;
+	transition: all .15s linear;
+	@apply font-semibold text-gray-100 px-4 py-2 text-xl w-48 h-14
+	hover:-translate-y-1.5 active:-translate-y-0.5 uppercase font-bold;
+}
+
+.signup__button:hover {
+	box-shadow: 0 5px 10px rgba(0,0,0,.2);
+}
+
+.signup__button:active {
+	box-shadow: 0 4px 5px rgba(0,0,0,.2);
+}
+
+.signup__form {
+	@apply flex flex-col flex-1 justify-around items-center;
+}

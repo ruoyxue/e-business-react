@@ -1,0 +1,35 @@
+.product__card {
+	@apply relative box-shadow-md overflow-hidden;
+}
+
+.product__card:hover .product__img {
+	filter: blur(5px);
+}
+
+.product__card:hover .product__button {
+	opacity: 100;
+	transform: translate(-50%, -60px);
+}
+
+.product__img {
+	@apply w-full transition-all;
+}
+
+.product__button {
+	transition: opacity .3s linear, transform .3s ease;
+	@apply uppercase absolute top-2/3 left-1/2 -translate-x-1/2 bg-gray-200
+	min-w-min h-20 w-3/5 text-3xl rounded-md font-medium z-20 border-2 border-black cursor-pointer 
+	hover:bg-gray-50 active:bg-slate-200 opacity-0;
+}
+
+.product__info {
+	background-color: rgba(80,120,160,.8);
+	height: 20%;
+	max-height: 6rem;
+	@apply absolute z-10 bottom-0 w-full text-stone-200 text-4xl font-bold flex 
+	justify-around items-center;
+}
+
+.product__info span:first-of-type {
+	@apply leading-normal overflow-hidden whitespace-nowrap text-ellipsis;
+}
