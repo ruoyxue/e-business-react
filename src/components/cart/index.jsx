@@ -1,7 +1,7 @@
 import CartDropdown from "../cart-dropdown";
 import React, {useState, useContext} from 'react'
 import { CartContext } from "../../contexts/cart.context"
-import ShoppingBagImage from './src/assets/images/shopping_bag.png'
+import ShoppingBagImage from '../../assets/images/shopping_bag.png'
 
 export default function Cart() {
 	const [isCartOpen, setIsCartOpen] = useState(false)

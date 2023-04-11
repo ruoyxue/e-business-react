@@ -6,7 +6,7 @@ import {
 	signInAuthUserwithEmailAndPassword,
 } from '../../utils/firebase'
 import LoginStyle from './index.module.css'
-import GoogleImage from './src/assets/images/google.png'
+import GoogleImage from '../../assets/images/google.png'
 
 export default function Login() {
 	let emailRef = useRef()
