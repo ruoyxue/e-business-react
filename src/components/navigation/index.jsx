@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { UserContext } from '../../contexts/user.context'
 import { signoutUser } from '../../utils/firebase'
 import Cart from '../cart'
+import LogoImage from '../../assets/images/logo.png'
 
 export default function NavigationBar() {
 	const { currentUser } = useContext(UserContext)
@@ -15,7 +16,8 @@ export default function NavigationBar() {
 	return (
 		<div className='select-none flex h-10vh pl-6 pr-12 justify-center text-4xl items-center'>
 			<Link to=''>
-				<img className='ml-4 h-16 hover:-translate-y-0.5 active:translate-y-0 transition-all' src="src/assets/images/logo.png" alt="logo"/>
+				<img className='ml-4 h-16 hover:-translate-y-0.5 active:translate-y-0 transition-all' 
+				src={LogoImage} alt="logo"/>
 			</Link>
 			<Link className='ml-auto mr-10 hover:-translate-y-0.5 active:translate-y-0 hover:text-shadow-sm transition-all' to='/shop'>
 				shop
