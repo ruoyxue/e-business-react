@@ -6,7 +6,7 @@ import {
 	signInAuthUserwithEmailAndPassword,
 } from '../../utils/firebase'
 import LoginStyle from './index.module.css'
-
+import GoogleImage from './src/assets/images/google.png'
 
 export default function Login() {
 	let emailRef = useRef()
@@ -58,7 +58,7 @@ export default function Login() {
 					<div className='mt-10 flex justify-center'>
 						<button type="submit" className={`${LoginStyle.login__button} mr-6`}>Log In</button>
 						<button className={`${LoginStyle.login__button} flex justify-center items-center`} onClick={LoginWithGoogle}>
-							<img className='h-6 w-6 mr-4 block opacity-70' src="./src/assets/images/google.png" alt="google icon" />
+							<img className='h-6 w-6 mr-4 block opacity-70' src={GoogleImage} alt="google icon" />
 							<span>Log In with Google</span>
 						</button>
 					</div>
