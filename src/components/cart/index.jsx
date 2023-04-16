@@ -1,12 +1,12 @@
 import CartDropdown from "../cart-dropdown";
 import React, {useState, useContext} from 'react'
-import { CartContext } from "../../contexts/cart.context"
 import ShoppingBagImage from '../../assets/images/shopping_bag.png'
+import { useSelector } from "react-redux";
+
 
 export default function Cart() {
-	const [isCartOpen, setIsCartOpen] = useState(false)
-	const { cartItems } = useContext(CartContext)
-	const cartItemCount = cartItems.reduce((prevTotal, currItem) =>  prevTotal + currItem.quantity, 0)
+	const [ isCartOpen, setIsCartOpen ] = useState(false)
+	const { cartItemCount } = useSelector(state => state.cartItems)
 
 	function clickHandler() {
 		setIsCartOpen(!isCartOpen)

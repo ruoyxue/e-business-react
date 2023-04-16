@@ -1,10 +1,9 @@
-import React, {useContext, Fragment} from 'react'
-import { CartContext } from '../../contexts/cart.context'
+import React, { Fragment } from 'react'
 import CheckoutItem from '../../components/checkout-item'
-
+import { useSelector } from 'react-redux'
 
 export default function Checkout() {
-	const { cartItems } = useContext(CartContext)
+	const { cartItems } = useSelector(state => state.cartItems)
 	const PriceTotal = cartItems.reduce((prevTotal, currItem) => prevTotal + currItem.price * currItem.quantity, 0)
 
 	return (

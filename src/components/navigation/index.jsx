@@ -1,12 +1,15 @@
-import React, {useContext} from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
-import { UserContext } from '../../contexts/user.context'
 import { signoutUser } from '../../utils/firebase'
 import Cart from '../cart'
 import LogoImage from '../../assets/images/logo.png'
+import { useSelector } from "react-redux";
+
 
 export default function NavigationBar() {
-	const { currentUser } = useContext(UserContext)
+	const { userInfo } = useSelector((state) => {
+		return state.user
+	})
 
 	async function signOutHandler() {
 		await signoutUser()
@@ -26,12 +29,12 @@ export default function NavigationBar() {
 				contact
 			</Link>
 			{
-				currentUser ? (
+				userInfo ? (
 					<>
 						<span onClick={signOutHandler} className='cursor-pointer mr-10 hover:-translate-y-0.5 
 							hover:text-shadow-sm active:translate-y-0 transition-transform'>log out</span>
 						<span className='mr-10 font-extrabold'>
-							{ currentUser.displayName }
+							{ userInfo.displayName }
 						</span>
 					</>
 				) : (

@@ -1,16 +1,16 @@
-import React, {useContext} from 'react'
+import React from 'react'
 import CartDropdownStyle from './index.module.css'
 import CartItem from '../cart-item'
-import { CartContext } from '../../contexts/cart.context'
 import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 
 export default function CartDropdown(props) {
-	const {isCartOpen} = props
-	const {cartItems} = useContext(CartContext)
+	const { isCartOpen } = props
+	const { cartItems } = useSelector(state => state.cartItems)
 	const animationClass = isCartOpen ? CartDropdownStyle.animation__fadeIn : CartDropdownStyle.animation__fadeOut
 
 	return (
-		<div tabIndex={121} className={`${CartDropdownStyle.dropdown__box} ${animationClass} box-shadow-lg`}>
+		<div tabIndex={1} className={`${CartDropdownStyle.dropdown__box} ${animationClass} box-shadow-lg`}>
 			<div className={`${CartDropdownStyle.dropdown__content}`}>
 				{
 					cartItems.map(item => <div key={item.name}><CartItem {...item}/></div>)

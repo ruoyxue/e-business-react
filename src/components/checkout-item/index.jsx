@@ -1,39 +1,24 @@
-import React, {useContext} from 'react'
-import { CartContext } from '../../contexts/cart.context'
+import React from 'react'
+import { useDispatch } from 'react-redux'
+import { deleteProduct, incQuantity, decQuantity } from '../../store/cartItems'
 
 
 export default function CheckoutItem(props) {
 	const { imageUrl, name, price, quantity } = props 
-	const { cartItems, setCartItems } = useContext(CartContext)
+
+	const dispatch = useDispatch()
 
 	function removeCartItem() {
-		let newCartItems = cartItems.filter((item) => {
-			return item.name !== name
-		})
-		setCartItems(newCartItems)
+		dispatch(deleteProduct({ imageUrl, name, price, quantity }))
 		cocoMessage.success('Successfully remove the item', 1500)
 	}
 
-	function incQuantity() {
-		cartItems.some((item, index, arr) => {
-			if(item.name == name) {
-				arr[index].quantity += 1
-				return true		
-			}
-		})
-		setCartItems([...cartItems])
+	function increaseQuantity() {
+		dispatch(incQuantity({ imageUrl, name, price, quantity }))
 	}
 
-	function decQuantity() {
-		cartItems.some((item, index, arr) => {
-			if(item.name == name) {
-				if(arr[index].quantity > 1) {
-					arr[index].quantity -= 1
-				}
-				return true		
-			}
-		})
-		setCartItems([...cartItems])
+	function decreaseQuantity() {
+		dispatch(decQuantity({ imageUrl, name, price, quantity }))
 	}
 
 	return (
@@ -42,9 +27,9 @@ export default function CheckoutItem(props) {
 			<span className='w-2/5 px-8 leading-normal text-center overflow-y-hidden whitespace-nowrap text-ellipsis'>{name}</span>
 			<div style={{width: '13.3333333%'}}>
 				<div className="select-none flex justify-between mx-auto w-1/2">
-					<button className='font-bold active:text-gray-300 transition-all' onClick={decQuantity}>&lt;</button>
+					<button className='font-bold active:text-gray-300 transition-all' onClick={decreaseQuantity}>&lt;</button>
 					{quantity}
-					<button className='font-bold active:text-gray-300 transition-all' onClick={incQuantity}>&gt;</button>
+					<button className='font-bold active:text-gray-300 transition-all' onClick={increaseQuantity}>&gt;</button>
 				</div>
 			</div>
 			<span className="text-center" style={{width: '13.3333333%'}}>{price}</span>

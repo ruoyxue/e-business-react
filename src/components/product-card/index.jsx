@@ -1,29 +1,15 @@
-import React, {useContext} from 'react'
+import React from 'react'
 import ProductCardStyle from './index.module.css'
-import { CartContext } from '../../contexts/cart.context'
+import { useDispatch } from 'react-redux'
+import { addProduct } from '../../store/cartItems'
+
 
 export default function ProductCard(props) {
 	const { name, imageUrl, price } = props
-	const { cartItems, setCartItems } = useContext(CartContext)
-
+	const dispatch = useDispatch()
+	
 	function addCartItem() {
-		let newCartItems
-		let flag = cartItems.some((item, index, arr) => {
-			if(item.name == name) {
-				arr[index].quantity += 1
-				return true
-			}
-		})
-
-		if(!flag) {
-			let newItem = {imageUrl, name, price, quantity: 1}
-			newCartItems = [...cartItems, newItem]
-		}
-		else {
-			newCartItems = [...cartItems]
-		}
-		
-		setCartItems(newCartItems)
+		dispatch(addProduct({name, imageUrl, price}))
 		cocoMessage.success("Add Product Successfully", 1000)
 	}
 	
